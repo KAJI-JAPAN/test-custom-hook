@@ -2,11 +2,10 @@
 
 import axios from "axios";
 import { useState } from "react";
-import { UserProfile } from "../types/userProfile"
-import { User } from "../types/api/user"
+import { UserProfile } from "../types/userProfile";
+import { User } from "../types/api/user";
 
-
-export const  useAllUsers = () => {
+export const useAllUsers = () => {
   const [userProfiles, setUserProfiles] = useState<Array<UserProfile>>();
 
   const [loading, setLoading] = useState(false);
@@ -26,11 +25,12 @@ export const  useAllUsers = () => {
         }));
         setUserProfiles(data);
       })
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
-
-  }
-  return { getUsers, userProfiles, loading, error }
-}
-
+  return { getUsers, userProfiles, loading, error };
+};
